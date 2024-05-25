@@ -21,7 +21,7 @@ int main() {
         for(long long int j = res[i] * res[i]; j <= b; j *= res[i]) {
             if(j>=a) {
                 res_cnt++;
-                if(j > 1000000000000000LL/res[i]) break;
+                if(j > b/res[i]) break;
             }
         }
     }
