@@ -1,0 +1,57 @@
+// Online C++ compiler to run C++ program online
+#include <iostream>
+#include <queue>
+#include <vector>
+#define INF 987654321
+using namespace std;
+
+int main() {
+    ios_base :: sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+    int n,m, r, a,b,c, res=0, max = 0;
+    int dist[101];
+    int cnt[101];
+    vector<pair<int,int>> vec[101];
+    cin >> n >> m >> r;
+    for(int i = 1; i <= n; i++) {
+        cin >> cnt[i];
+    }
+    for(int i = 0; i < r; i++) {
+        cin >> a >> b >> c;
+        vec[a].push_back(make_pair(b,c));
+        vec[b].push_back(make_pair(a,c));
+    }
+    for(int k = 1; k <= n; k++) {
+        for(int j = 1; j <= n; j++) dist[j] = INF;
+        res=0;
+        priority_queue<pair<int, int>, vector<pair<int, int>>, greater<pair<int, int>>> pq;
+        
+        pq.push(make_pair(0,k));
+        dist[k]=0;
+        
+        while(!pq.empty()) {
+            int node = pq.top().second;
+            int cost = pq.top().first;
+            pq.pop();
+            if(cost > dist[node]) continue;
+            for(int i = 0; i < vec[node].size(); i++) {
+                int next = vec[node][i].first;
+                int ncost = vec[node][i].second;
+                
+                if(dist[next] > cost + ncost) {
+                    dist[next] = cost + ncost;
+                    pq.push(make_pair(dist[next], next));
+                }
+            }
+        }
+        for(int i = 1; i <= n; i++) {
+            if(m >= dist[i]) {
+                res += cnt[i];
+            }
+        }
+        if(max < res) max = res;
+    }
+    cout << max;
+    return 0;
+}
