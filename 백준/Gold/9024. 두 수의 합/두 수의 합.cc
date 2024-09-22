@@ -25,7 +25,7 @@ int main() {
             }
             else if (min == abs) cnt++;
             
-            if(arr[l]+arr[r] - k > 0) {
+            if(arr[l]+arr[r] > k) {
                 r--;
             }
             else {
