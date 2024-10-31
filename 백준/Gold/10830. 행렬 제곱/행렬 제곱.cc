@@ -6,7 +6,7 @@ using namespace std;
 int arr[5][5];
 int res[5][5];
 
-void matrixMultiply(int a[5][5], int b[5][5], int n) {
+void f(int a[5][5], int b[5][5], int n) {
     int mid[5][5] = {0};
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
@@ -33,15 +33,13 @@ int main() {
         }
     }
     for (int i = 0; i < n; i++) {
-        for (int j = 0; j < n; j++) {
-            res[i][j] = (i == j) ? 1 : 0;
-        }
+        res[i][i] = 1;
     }
     while (b > 0) {
         if (b % 2 == 1) {
-            matrixMultiply(res, arr, n);
+            f(res, arr, n);
         }
-        matrixMultiply(arr, arr, n); 
+        f(arr, arr, n); 
         b /= 2;
     }
     for(int i = 0; i < n; i++, puts("")) {
