@@ -1,8 +1,8 @@
 #include <iostream>
-
+#define MOD 1000000007LL
 using namespace std;
 
-void f(long long int a[2][2], long long int b[2][2], long long int MOD) {
+void f(long long int a[2][2], long long int b[2][2]) {
     long long int res[2][2] = {
         {
             (a[0][0] * b[0][0] + a[0][1] * b[1][0])%MOD,
@@ -22,7 +22,6 @@ void f(long long int a[2][2], long long int b[2][2], long long int MOD) {
 
 int f_fibo(long long int n) {
     if(n <= 1) return n;
-    long long int mod = 1000000007LL;
     long long int fibo[2][2] = {
         {1, 1},
         {1, 0}
@@ -34,8 +33,8 @@ int f_fibo(long long int n) {
     };
     
     while(n > 0) {
-        if(n % 2) f(res, fibo, mod);
-        f(fibo, fibo, mod);
+        if(n % 2) f(res, fibo);
+        f(fibo, fibo);
         n /= 2;
     }
     
