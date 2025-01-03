@@ -12,12 +12,15 @@ int main() {
         else if(num1<=l) v.push_back(1);
     }
     sort(v.rbegin(), v.rend());
-    int res=0;
-    for(int i = 0; i < v.size(); i++) {
-        if(v[i]==2) res += 140;
-        else res += 100;
-        if(i==k-1) break;
+    if(k==0) cout << 0;
+    else {
+        int res=0;
+        for(int i = 0; i < v.size(); i++) {
+            if(v[i]==2) res += 140;
+            else res += 100;
+            if(i==k-1) break;
+        }
+        cout << res;
     }
-    cout << res;
     return 0;
 }
