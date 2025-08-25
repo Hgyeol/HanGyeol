@@ -1,40 +1,42 @@
-#include <iostream>
+#include <stdio.h>
 #include <stack>
+#include <string.h>
 using namespace std;
 
 int main() {
     stack<int> stack;
     int n, num;
-    cin >> n;
-    string s;
+    scanf("%d", &n);
+
+    char s[10];  
     for(int i = 0; i < n; i++) {
-        cin >> s;
-        if(s.compare("push") == 0) {
-            cin >> num;
+        scanf("%s", s);
+        if(strcmp(s, "push") == 0) {
+            scanf("%d", &num);
             stack.push(num);
         }
-        else if(s.compare("pop") == 0) {
+        else if(strcmp(s, "pop") == 0) {
             if(stack.empty()) {
-                cout << "-1\n";
+                printf("-1\n");
             }
             else {
-                cout << stack.top() << "\n";
+                printf("%d\n", stack.top());
                 stack.pop();
             }
         }
-        else if(s.compare("top") == 0) {
+        else if(strcmp(s, "top") == 0) {
             if(stack.empty()) {
-                cout << "-1\n";
+                printf("-1\n");
             }
             else {
-                cout << stack.top() << "\n";
+                printf("%d\n", stack.top());
             }
         }
-        else if(s.compare("size") == 0) {
-            cout << stack.size() << "\n";
+        else if(strcmp(s, "size") == 0) {
+            printf("%d\n", (int)stack.size());
         }
-        else if(s.compare("empty") == 0) {
-            cout << (stack.empty() ? "1" : "0") << "\n";
+        else if(strcmp(s, "empty") == 0) {
+            printf("%d\n", stack.empty() ? 1 : 0);
         }
     }
     return 0;
