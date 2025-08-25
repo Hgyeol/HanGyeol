@@ -11,11 +11,11 @@ int main() {
     char s[10];  
     for(int i = 0; i < n; i++) {
         scanf("%s", s);
-        if(strcmp(s, "push") == 0) {
+        if(!strcmp(s, "push")) {
             scanf("%d", &num);
             stack.push(num);
         }
-        else if(strcmp(s, "pop") == 0) {
+        else if(!strcmp(s, "pop")) {
             if(stack.empty()) {
                 printf("-1\n");
             }
@@ -24,7 +24,7 @@ int main() {
                 stack.pop();
             }
         }
-        else if(strcmp(s, "top") == 0) {
+        else if(!strcmp(s, "top")) {
             if(stack.empty()) {
                 printf("-1\n");
             }
