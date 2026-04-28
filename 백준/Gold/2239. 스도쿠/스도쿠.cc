@@ -4,13 +4,12 @@
 using namespace std;
 
 int board[9][9];
-bool row_check[9][10]; // row_check[i][k]: i번째 행에 숫자 k가 있으면 true
-bool col_check[9][10]; // col_check[j][k]: j번째 열에 숫자 k가 있으면 true
-bool box_check[9][10]; // box_check[b][k]: b번째 박스에 숫자 k가 있으면 true
+bool row_check[9][10]; 
+bool col_check[9][10]; 
+bool box_check[9][10]; 
 
 vector<pair<int, int>> empty_cells; 
 
-// DFS 스도쿠 해결 함수
 void solve_sudoku(int idx) {
     if (idx == empty_cells.size()) {
         for (int i = 0; i < 9; i++) {
